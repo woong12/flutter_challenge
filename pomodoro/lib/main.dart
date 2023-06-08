@@ -30,7 +30,6 @@ class PomoTimer extends StatefulWidget {
 
 class _PomoTimerState extends State<PomoTimer> {
   int selectedButtonIndex = -1;
-
   int _selectedTime = 10;
   int _totalSec = 10 * 60;
   int _countRound = 0;
@@ -174,28 +173,10 @@ class _PomoTimerState extends State<PomoTimer> {
                         clipBehavior: Clip.none,
                         alignment: Alignment.center,
                         children: [
-                          Positioned(
-                            bottom: 32,
-                            child: Container(
-                              width: 130,
-                              height: 170,
-                              decoration: BoxDecoration(
-                                color: Colors.white54,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 16,
-                            child: Container(
-                              width: 140,
-                              height: 180,
-                              decoration: BoxDecoration(
-                                color: Colors.white60,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                          ),
+                          const TimeContainer(
+                              bottom: 32, width: 130, height: 170),
+                          const TimeContainer(
+                              bottom: 16, width: 140, height: 180),
                           Positioned(
                             child: Container(
                               width: 150,
@@ -224,27 +205,13 @@ class _PomoTimerState extends State<PomoTimer> {
                       const SizedBox(
                         width: 15,
                       ),
-                      Column(
+                      const Column(
                         children: [
-                          Container(
-                            width: 10,
-                            height: 10,
-                            decoration: BoxDecoration(
-                              color: Colors.white38,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          const SizedBox(
+                          Dot(),
+                          SizedBox(
                             height: 15,
                           ),
-                          Container(
-                            width: 10,
-                            height: 10,
-                            decoration: BoxDecoration(
-                              color: Colors.white38,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
+                          Dot(),
                         ],
                       ),
                       const SizedBox(
@@ -254,28 +221,10 @@ class _PomoTimerState extends State<PomoTimer> {
                         clipBehavior: Clip.none,
                         alignment: Alignment.center,
                         children: [
-                          Positioned(
-                            bottom: 32,
-                            child: Container(
-                              width: 130,
-                              height: 170,
-                              decoration: BoxDecoration(
-                                color: Colors.white54,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 16,
-                            child: Container(
-                              width: 140,
-                              height: 180,
-                              decoration: BoxDecoration(
-                                color: Colors.white60,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                          ),
+                          const TimeContainer(
+                              bottom: 32, width: 130, height: 170),
+                          const TimeContainer(
+                              bottom: 16, width: 140, height: 180),
                           Positioned(
                             child: Container(
                               width: 150,
@@ -480,6 +429,52 @@ class _PomoTimerState extends State<PomoTimer> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class Dot extends StatelessWidget {
+  const Dot({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 10,
+      height: 10,
+      decoration: BoxDecoration(
+        color: Colors.white38,
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
+  }
+}
+
+class TimeContainer extends StatelessWidget {
+  final double bottom;
+  final double width;
+  final double height;
+
+  const TimeContainer({
+    super.key,
+    required this.bottom,
+    required this.width,
+    required this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: bottom,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: Colors.white54,
+          borderRadius: BorderRadius.circular(5),
         ),
       ),
     );
